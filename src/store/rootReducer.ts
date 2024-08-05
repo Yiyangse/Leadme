@@ -27,8 +27,6 @@ const todos = (state = [], action: any) => {
   }
 };
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   todos,
 });
-
-export default rootReducer;
