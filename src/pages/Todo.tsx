@@ -1,12 +1,12 @@
+// Todo.tsx
 import React from 'react';
 import styled from 'styled-components';
-import ButtonList from '../components/ButtonList';
 
 const Todo: React.FC = () => {
   return (
     <Container>
-      <Title>💭나를 힘들게 하는 마음 고민은 무엇인가요?</Title>
-      <ButtonList />
+      <Title>하루 랜덤 미션으로</Title>
+      <Text>성취감 가져보기</Text>
     </Container>
   );
 };
@@ -17,14 +17,21 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color:  #1f9ba1;
+  background-color: #FFFF;
   text-align: center;
 `;
 
-const Title = styled.h2`
+const Title = styled.h1`
   font-size: 2em;
-  color: white;
+  color: #1f9ba1;
   margin-bottom: 20px;
 `;
+
+const Text = styled.h1`
+  font-size: 1em;
+  color: #1f9ba1;
+  margin-bottom: 20px;
+`;
+
 
 export default Todo;

@@ -1,13 +1,21 @@
+// ButtonList.tsx
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const ButtonList: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    navigate('/todo');
+  };
+
   return (
     <ButtonContainer>
-      <StyledButton>마음의 안정을 찾고 싶어요</StyledButton>
-      <StyledButton>오늘도 이룬 게 없는 것 같아요</StyledButton>
-      <StyledButton>내가 자꾸만 미워져요</StyledButton>
-      <StyledButton>가족이 불편해요</StyledButton>
+      <StyledButton onClick={handleButtonClick}>마음의 안정을 찾고 싶어요</StyledButton>
+      <StyledButton onClick={handleButtonClick}>오늘도 이룬 게 없는 것 같아요</StyledButton>
+      <StyledButton onClick={handleButtonClick}>내가 자꾸만 미워져요</StyledButton>
+      <StyledButton onClick={handleButtonClick}>가족이 불편해요</StyledButton>
     </ButtonContainer>
   );
 };
