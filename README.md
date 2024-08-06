@@ -1,46 +1,56 @@
-# Getting Started with Create React App
+# Read me and Lead me <릿미>
+<aside>
+  1.프로젝트 주제 선정
+  - 셀프 탐색부터 보완점 진단, 이에 대한 학습 추천과 마이크로러닝을 통합 지원하는 서비스
+  <br/>
+  2.작업 및 형태
+  - 작업 기간 : 24.07.19 - 24.09.30
+  - 형태 : 데이터 기반 웹 서비스 - 스마트 LMS 프로토 타입
+</aside>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 프로젝트 팀원
+<aside>
+  
+  **[기획팀]** 
 
-## Available Scripts
+- 서비스 기획자(상위 기획) 김현우
+- 서비스 기획자(기능 정의) 최성환
+- PO & 스크럼 마스터 이승연
 
-In the project directory, you can run:
+**[개발팀]**
 
-### `npm start`
+- 서비스 개발자(풀스택) 김영하
+- 서비스 개발자(프론트) 박세양
+</aside>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# GIT 규칙 - commit, branch
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<aside>
+💡 가급적 아래 가이드라인에 따라 개발을 진행해주세요.
 
-### `npm test`
+</aside>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Commit 규칙
 
-### `npm run build`
+<aside>
+📢 commit 메세지 작성 방식은 개인마다 차이가 있어 굳이 아래 내용을 따르지 않아도 좋습니다. 단, 내용을 알 수 있도록 `이슈type : 세부 설명` 구조를 지켜주세요😊
+⭕ `코드수정 : 로그인 코드 수정`, `replace : 로고 교체`, `북마크 조회 EndPoint 변경` 
+❌ `aaa`, `엔드포인트 변경`, `기능 완성`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+</aside>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- `Feat` : 새로운 기능을 추가할 경우
+- `Add` : 새로운 파일을 추가한 경우
+- `Update` : 기능, 코드를 수정한 경우
+- `Fix` : 버그를 고친 경우
+- `Remove` : 파일을 삭제하는 작업만 수행한 경우
+- `Rename` : 파일 및 폴더명을 수정하거나 옮긴 경우
+- `Chore` : 패키지 매니저를 설정하는 경우(ex. npm i ~ 로 package.json 변경된 경우)
+- 이외 지켜줬으면 하는 commit 규칙 있으면 추가해주세요.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Branch 컨벤션
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. 매주 토요일 `master branch`에 merge 
+2. 기능(feature)별로 작성 (예시 : `back/jm_login`)
+3. `feature`는 `dev`로부터 분기
+4. 완성된 `feature`는 `dev`에 병합
