@@ -5,12 +5,10 @@ import ButtonList from '../components/ButtonList';
 const Home: React.FC = () => {
   return (
     <Container>
-      <Title>💭나를 힘들게 하는 마음 고민은 무엇인가요?</Title>
-      <ButtonList />
-      <br></br>
-      <br></br>
+      <Title>💭오늘 하루 어떠셨나요?</Title>
+      
       <Text>
-      텍스트텍스트텍스트
+      나를 위한 시간하루 10분,
     </Text>     
     </Container>
 
@@ -28,7 +26,7 @@ const Container = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 2em;
+  font-size: 5em;
   color: white;
   margin-bottom: 20px;
 `;
