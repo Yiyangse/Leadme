@@ -1,59 +1,70 @@
+// src/pages/Write.tsx
 import React, { useState } from 'react';
 import styled from 'styled-components';
+
+interface Post {
+  id: number;
+  title: string;
+  content: string;
+}
 
 // Write 컴포넌트 정의
 const Write: React.FC = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [prompt, setPrompt] = useState('');
-  const [chatHistory, setChatHistory] = useState<string[]>([]);
-  const [userInput, setUserInput] = useState('');
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [isEditing, setIsEditing] = useState<number | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Title:', title);
-    console.log('Content:', content);
+    if (isEditing !== null) {
+      // 수정 모드일 때
+      const updatedPosts = posts.map(post => 
+        post.id === isEditing ? { ...post, title, content } : post
+      );
+      setPosts(updatedPosts);
+      setIsEditing(null);
+    } else {
+      // 새 글 작성 모드일 때
+      const newPost: Post = {
+        id: Date.now(),
+        title,
+        content,
+      };
+      setPosts([...posts, newPost]);
+    }
+    setTitle('');
+    setContent('');
+  };
+
+  const handleEdit = (id: number) => {
+    const postToEdit = posts.find(post => post.id === id);
+    if (postToEdit) {
+      setTitle(postToEdit.title);
+      setContent(postToEdit.content);
+      setIsEditing(id);
+    }
+  };
+
+  const handleDelete = (id: number) => {
+    const updatedPosts = posts.filter(post => post.id !== id);
+    setPosts(updatedPosts);
   };
 
   const generatePrompt = () => {
     const prompts = [
-      
-'용기', '실천', '효도', '공감', '매력', '절제', '생명존중', '자연', '인류애', '우정', '기여', '친절', '사랑', '배움', '보람', '호기심', '일관성', '정직', '배려', '겸손', '여유', '즐거움', '꿈', '휴식', '공정', '균형', '단순', '다양', '명예', '봉사', '성실', '소통', '안정', '건강', '권위', '도전', '변화', '성취', '성장', '부유', '목표', '가족', '긍정', '예술', '유머', '열정', '완벽', '인정', '조화', '지식', '책임', '충성', '평화', '협력', '효과', '지혜', '존경', '자율', '헌신', '탁월', '예의', '자존감', '종교', '창의', '도덕', '관용', '신속', '신뢰'
+      '용기', '실천', '효도', '공감', '매력', '절제', '생명존중', '자연', '인류애', '우정', '기여', '친절', '사랑', '배움', '보람', '호기심', '일관성', '정직', '배려', '겸손', '여유', '즐거움', '꿈', '휴식', '공정', '균형', '단순', '다양', '명예', '봉사', '성실', '소통', '안정', '건강', '권위', '도전', '변화', '성취', '성장', '부유', '목표', '가족', '긍정', '예술', '유머', '열정', '완벽', '인정', '조화', '지식', '책임', '충성', '평화', '협력', '효과', '지혜', '존경', '자율', '헌신', '탁월', '예의', '자존감', '종교', '창의', '도덕', '관용', '신속', '신뢰'
     ];
     const randomIndex = Math.floor(Math.random() * prompts.length);
     setPrompt(prompts[randomIndex]);
   };
 
-  const handleChatSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (userInput.trim()) {
-      const response = generateChatResponse(userInput);
-      setChatHistory([...chatHistory, `사용자: ${userInput}`, `chat매글: ${response}`]);
-      setUserInput('');
-    }
-  };
-
-  const generateChatResponse = (input: string): string => {
-    // 간단한 예시 응답 생성 로직
-    // ChatGPT API를 사용할 경우 여기에 API 호출 로직
-    const responses = [
-      '안녕하세요!',
-      '오늘 기분은 어떠신가요?',
-      '당신이 말한 주제에 대해 더 깊이 이야기해 볼까요?',
-      '훌륭하네요!'
-    ];
-    const randomIndex = Math.floor(Math.random() * responses.length);
-    return responses[randomIndex];
-  };
-
   return (
     <Container>
-      {/* 글감 생성 버튼 */}
       <GenerateButton onClick={generatePrompt}>글감 생성하기</GenerateButton>
-      {/* 글감 */}
       {prompt && <PromptDisplay>{prompt}</PromptDisplay>}
 
-      {/* 글쓰기 폼 */}
       <Form onSubmit={handleSubmit}>
         <Input 
           type="text" 
@@ -66,26 +77,21 @@ const Write: React.FC = () => {
           value={content} 
           onChange={(e) => setContent(e.target.value)} 
         />
-        <Button type="submit">글쓰기</Button>
+        <Button type="submit">{isEditing !== null ? '수정하기' : '글쓰기'}</Button>
       </Form>
 
-      {/* 명령 프롬프트 영역 */}
-      <ChatContainer>
-        <ChatHistory>
-          {chatHistory.map((entry, index) => (
-            <ChatEntry key={index}>{entry}</ChatEntry>
-          ))}
-        </ChatHistory>
-        <ChatInputForm onSubmit={handleChatSubmit}>
-          <ChatInput 
-            type="text" 
-            placeholder="대화를 입력하세요..." 
-            value={userInput} 
-            onChange={(e) => setUserInput(e.target.value)} 
-          />
-          <ChatButton type="submit">전송</ChatButton>
-        </ChatInputForm>
-      </ChatContainer>
+      <PostsList>
+        {posts.map(post => (
+          <PostItem key={post.id}>
+            <PostTitle>{post.title}</PostTitle>
+            <PostContent>{post.content}</PostContent>
+            <PostActions>
+              <EditButton onClick={() => handleEdit(post.id)}>수정</EditButton>
+              <DeleteButton onClick={() => handleDelete(post.id)}>삭제</DeleteButton>
+            </PostActions>
+          </PostItem>
+        ))}
+      </PostsList>
     </Container>
   );
 };
@@ -99,6 +105,7 @@ const Container = styled.div`
   justify-content: center;
   height: 100vh;
   background-color: #f0f0f0;
+  padding: 20px;
 `;
 
 const Form = styled.form`
@@ -149,43 +156,47 @@ const PromptDisplay = styled.p`
   color: #333;
 `;
 
-const ChatContainer = styled.div`
+const PostsList = styled.div`
   width: 80%;
   max-width: 600px;
   margin-top: 20px;
-  border: 1px solid #ccc;
-  padding: 10px;
+`;
+
+const PostItem = styled.div`
   background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 10px;
   border-radius: 5px;
 `;
 
-const ChatHistory = styled.div`
-  height: 200px;
-  overflow-y: auto;
-  margin-bottom: 10px;
+const PostTitle = styled.h3`
+  margin: 0;
+  font-size: 1.4em;
 `;
 
-const ChatEntry = styled.div`
-  margin-bottom: 5px;
-  font-size: 1em;
+const PostContent = styled.p`
+  margin: 10px 0;
 `;
 
-const ChatInputForm = styled.form`
+const PostActions = styled.div`
   display: flex;
+  justify-content: flex-end;
 `;
 
-const ChatInput = styled.input`
-  flex: 1;
-  padding: 10px;
-  font-size: 1em;
-`;
-
-const ChatButton = styled(Button)`
-  margin-left: 10px;
+const EditButton = styled(Button)`
   background-color: #1f9ba1;
+  margin-right: 10px;
 
   &:hover {
     background-color: #1c8a90;
+  }
+`;
+
+const DeleteButton = styled(Button)`
+  background-color: #e74c3c;
+  &:hover {
+    background-color: #c0392b;
   }
 `;
 
