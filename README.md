@@ -24,45 +24,43 @@
 ```
 LEADME/
 │
-├── node_modules/
+├── backend/                    # 백엔드 관련 폴더
+│   ├── controllers/            # 라우트 핸들러
+│   ├── models/                 # Mongoose 모델
+│   ├── routes/                 # API 라우트
+│   ├── middleware/             # 커스텀 미들웨어
+│   ├── config/                 # 환경 설정 파일 (예: DB 설정)
+│   ├── utils/                  # 유틸리티 함수
+│   ├── server.js               # Express 서버 엔트리 포인트
+│   ├── .env                    # 환경 변수 파일
+│   └── package.json            # 백엔드 의존성 관리
 │
-├── public/
+├── node_modules/               # 프론트엔드 의존성 (프론트엔드와 백엔드의 의존성을 분리할 수 있음)
 │
-├── src/
-│ ├── components/
-│ │ ├── ButtonList.tsx
-│ │ ├── Footer.tsx
-│ │ └── Header.tsx
-│ │
-│ ├── pages/
-│ │ ├── auth/
-│ │ │ ├── Login.tsx
-│ │ │ ├── LoginForm.tsx
-│ │ │ └── SocialLogin.tsx
-│ │ │
-│ │ ├── Home.tsx
-│ │ ├── Todo.tsx
-│ │ └── Write.tsx
-│ │
-│ ├── store/
-│ │
-│ ├── App.css
-│ ├── App.styles.ts
-│ ├── App.test.tsx
-│ ├── App.tsx
-│ ├── index.css
-│ ├── index.tsx
-│ ├── logo.svg
-│ ├── react-app-env.d.ts
-│ ├── reportWebVitals.ts
-│ ├── setupTests.ts
-│ │
-│ ├── .gitignore
-│ ├── package-lock.json
-│ ├── package.json
-│ ├── README.md
-│ ├── tailwind.config.js
-│ └── tsconfig.json
+├── public/                     # 정적 파일 (예: index.html)
+│
+├── src/                        # 프론트엔드 소스 코드
+│   ├── components/             # UI 컴포넌트
+│   ├── pages/                  # 페이지 컴포넌트
+│   ├── store/                  # 전역 상태 관리 (예: Redux)
+│   ├── App.css
+│   ├── App.styles.ts
+│   ├── App.test.tsx
+│   ├── App.tsx
+│   ├── index.css
+│   ├── index.tsx
+│   ├── logo.svg
+│   ├── react-app-env.d.ts
+│   ├── reportWebVitals.ts
+│   ├── setupTests.ts
+│
+├── .gitignore
+├── package-lock.json           # 프론트엔드 의존성 관리
+├── package.json                # 프론트엔드 의존성 관리
+├── README.md
+├── tailwind.config.js
+└── tsconfig.json
+
 ```
 
 ---

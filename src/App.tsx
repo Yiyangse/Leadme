@@ -6,6 +6,7 @@ import Write from './pages/Write';
 import Login from './pages/auth/Login'; 
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Signup from './pages/auth/Signup';
 
 const App: React.FC = () => {
   return (
@@ -17,6 +18,7 @@ const App: React.FC = () => {
           <Route path="/todo" element={<Todo />} />
           <Route path="/write" element={<Write />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
         <Footer />
       </div>
