@@ -6,6 +6,7 @@ import SocialLogin from './SocialLogin';
 const Login = () => {
   return (
     <Container>
+      <Text>아래 방법들 중 선택하여 로그인을 할 수 있습니다.</Text>
       <LoginForm />
       <SocialLogin />
     </Container>
@@ -24,4 +25,9 @@ const Container = styled.div`
   padding: 20px;
 `;
 
+const Text = styled.h1`
+  font-size: 1em;
+  color: #1f9ba1;
+  margin-bottom: 20px;
+`;
 export default Login;

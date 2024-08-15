@@ -13,6 +13,7 @@ const SocialLogin = () => {
 
   return (
     <Container>
+        <br></br>
       <Text>간편 로그인</Text>
       <KakaoLogin
         token="<카카오 앱 REST API 키를 여기에 입력하세요>"
@@ -21,10 +22,11 @@ const SocialLogin = () => {
         onLogout={console.info}
         render={(props: any) => (
           <SocialLoginButton onClick={props.onClick}>
-            카카오 로그인
+            Kakao 로그인
           </SocialLoginButton>
         )}
       />
+      <GoogleLoginButton>구글로그인</GoogleLoginButton>
     </Container>
   );
 };
@@ -38,9 +40,10 @@ const Container = styled.div`
   justify-content: center;
 `;
 
-const Text = styled.p`
-  font-size: 1.2em;
-  margin-bottom: 10px;
+const Text = styled.h1`
+  font-size: 1em;
+  color: #1f9ba1;
+  margin-bottom: 20px;
 `;
 
 const SocialLoginButton = styled.div`
@@ -48,6 +51,23 @@ const SocialLoginButton = styled.div`
   font-size: 1.2em;
   background-color: #f7e600;
   color: #3c1e1e;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+
+  &:hover {
+    background-color: #f5d800;
+  }
+`;
+
+const GoogleLoginButton = styled.div`
+  padding: 10px;
+  font-size: 1.2em;
+  background-color: red;
+  color: white;
   border: none;
   cursor: pointer;
   border-radius: 5px;
