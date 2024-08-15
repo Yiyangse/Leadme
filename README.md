@@ -1,21 +1,59 @@
 # Read me and Lead me <릿미>
 <aside>
   1.프로젝트 주제 선정
-  - 셀프 탐색부터 보완점 진단, 이에 대한 학습 추천과 마이크로러닝을 통합 지원하는 서비스
+  - 셀프 탐색부터 보완점 진단, 이에 대한 글쓰기 지원하는 웹 서비스
   <br/>
   2.작업 및 형태
   - 작업 기간 : 24.07.19 - 24.09.30
-  - 형태 : 데이터 기반 웹 서비스 - 스마트 LMS 프로토 타입
+  - 형태 : 단단한 '나'를 만들기 위한 쉬운 글쓰기 플랫폼
 </aside>
 
 # 프로젝트 팀원
 <aside>
-  
-  **[기획팀]** 
 
-- 서비스 기획자(상위 기획) 김현우
-- 서비스 기획자(기능 정의) 최성환
-- PO & 스크럼 마스터 이승연
+**[폴더 구조]**
+
+LEADME/
+│
+├── node_modules/
+│
+├── public/
+│
+├── src/
+│ ├── components/
+│ │ ├── ButtonList.tsx
+│ │ ├── Footer.tsx
+│ │ └── Header.tsx
+│ │
+│ ├── pages/
+│ │ ├── auth/
+│ │ │ ├── Login.tsx
+│ │ │ ├── LoginForm.tsx
+│ │ │ └── SocialLogin.tsx
+│ │ │
+│ │ ├── Home.tsx
+│ │ ├── Todo.tsx
+│ │ └── Write.tsx
+│ │
+│ ├── store/
+│ │
+│ ├── App.css
+│ ├── App.styles.ts
+│ ├── App.test.tsx
+│ ├── App.tsx
+│ ├── index.css
+│ ├── index.tsx
+│ ├── logo.svg
+│ ├── react-app-env.d.ts
+│ ├── reportWebVitals.ts
+│ ├── setupTests.ts
+│ │
+│ ├── .gitignore
+│ ├── package-lock.json
+│ ├── package.json
+│ ├── README.md
+│ ├── tailwind.config.js
+│ └── tsconfig.json
 
 **[개발팀]**
 

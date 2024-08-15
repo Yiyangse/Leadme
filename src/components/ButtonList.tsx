@@ -9,6 +9,7 @@ const ButtonList: React.FC = () => {
     <ButtonContainer>
       <Button onClick={() => navigate('/home')}>Home</Button>
       <Button onClick={() => navigate('/todo')}>Todo</Button>
+      <Button onClick={() => navigate('/login')}>로그인</Button>
     </ButtonContainer>
   );
 };

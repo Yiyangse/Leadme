@@ -8,6 +8,7 @@ const Header: React.FC = () => {
       <NavItem to="/home">Home</NavItem>
       <NavItem to="/todo">Todo</NavItem>
       <NavItem to="/write">Write</NavItem>
+      <NavItem to="/login">로그인</NavItem>
     </Nav>
   );
 };

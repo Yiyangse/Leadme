@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Todo from './pages/Todo';
 import Write from './pages/Write';
+import Login from './pages/auth/Login'; 
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -15,6 +16,7 @@ const App: React.FC = () => {
           <Route path="/home" element={<Home />} />
           <Route path="/todo" element={<Todo />} />
           <Route path="/write" element={<Write />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
         <Footer />
       </div>
