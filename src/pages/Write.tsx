@@ -1,6 +1,4 @@
-// src/pages/Write.tsx
 import React, { useState } from 'react';
-import styled from 'styled-components';
 
 interface Post {
   id: number;
@@ -20,7 +18,7 @@ const Write: React.FC = () => {
     e.preventDefault();
     if (isEditing !== null) {
       // 수정 모드일 때
-      const updatedPosts = posts.map(post => 
+      const updatedPosts = posts.map(post =>
         post.id === isEditing ? { ...post, title, content } : post
       );
       setPosts(updatedPosts);
@@ -61,143 +59,67 @@ const Write: React.FC = () => {
   };
 
   return (
-    <Container>
-      <GenerateButton onClick={generatePrompt}>글감 생성하기</GenerateButton>
-      {prompt && <PromptDisplay>{prompt}</PromptDisplay>}
+    <div className="flex flex-col items-center justify-center h-screen bg-gray-100 p-5">
+      <div className="relative mb-5">
+        <button
+          onClick={generatePrompt}
+          className="px-4 py-2 text-lg font-semibold text-white bg-teal-500 rounded-md shadow-md hover:bg-teal-600 transition-colors duration-300"
+        >
+          글감 생성하기
+        </button>
+        {prompt && (
+          <p className="absolute bottom-full mb-2 text-lg text-gray-800 bg-white p-3 rounded-md shadow-md animate-slide-up">
+            {prompt}
+          </p>
+        )}
+      </div>
 
-      <Form onSubmit={handleSubmit}>
-        <Input 
-          type="text" 
-          placeholder="제목을 입력하세요" 
-          value={title} 
-          onChange={(e) => setTitle(e.target.value)} 
+      <form onSubmit={handleSubmit} className="flex flex-col w-full max-w-lg space-y-4">
+        <input
+          type="text"
+          placeholder="제목을 입력하세요"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          className="p-3 text-lg border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-300"
         />
-        <TextArea 
-          placeholder="내용을 입력하세요" 
-          value={content} 
-          onChange={(e) => setContent(e.target.value)} 
+        <textarea
+          placeholder="내용을 입력하세요"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          className="p-3 text-lg border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-300 h-48 resize-none"
         />
-        <Button type="submit">{isEditing !== null ? '수정하기' : '글쓰기'}</Button>
-      </Form>
+        <button
+          type="submit"
+          className="p-3 text-lg font-semibold text-white bg-teal-500 rounded-md shadow-md hover:bg-teal-600 focus:outline-none transition-colors duration-300"
+        >
+          {isEditing !== null ? '수정하기' : '글쓰기'}
+        </button>
+      </form>
 
-      <PostsList>
+      <div className="w-full max-w-lg mt-8 space-y-4">
         {posts.map(post => (
-          <PostItem key={post.id}>
-            <PostTitle>{post.title}</PostTitle>
-            <PostContent>{post.content}</PostContent>
-            <PostActions>
-              <EditButton onClick={() => handleEdit(post.id)}>수정</EditButton>
-              <DeleteButton onClick={() => handleDelete(post.id)}>삭제</DeleteButton>
-            </PostActions>
-          </PostItem>
+          <div key={post.id} className="bg-white border border-gray-300 p-4 rounded-md shadow-sm">
+            <h3 className="text-xl font-semibold">{post.title}</h3>
+            <p className="mt-2 text-gray-800">{post.content}</p>
+            <div className="flex justify-end mt-4 space-x-2">
+              <button
+                onClick={() => handleEdit(post.id)}
+                className="px-4 py-2 text-white bg-teal-500 rounded-md shadow-md hover:bg-teal-600 transition-colors duration-300"
+              >
+                수정
+              </button>
+              <button
+                onClick={() => handleDelete(post.id)}
+                className="px-4 py-2 text-white bg-red-500 rounded-md shadow-md hover:bg-red-600 transition-colors duration-300"
+              >
+                삭제
+              </button>
+            </div>
+          </div>
         ))}
-      </PostsList>
-    </Container>
+      </div>
+    </div>
   );
 };
-
-// 스타일드 컴포넌트 정의
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-color: #f0f0f0;
-  padding: 20px;
-`;
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  max-width: 600px;
-`;
-
-const Input = styled.input`
-  padding: 10px;
-  margin-bottom: 10px;
-  font-size: 1.2em;
-`;
-
-const TextArea = styled.textarea`
-  padding: 10px;
-  margin-bottom: 10px;
-  font-size: 1em;
-  height: 200px;
-`;
-
-const Button = styled.button`
-  padding: 10px;
-  font-size: 1.2em;
-  background-color: #1f9ba1;
-  color: white;
-  border: none;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #1c8a90;
-  }
-`;
-
-const GenerateButton = styled(Button)`
-  background-color: #1f9ba1;
-  margin-bottom: 20px;
-
-  &:hover {
-    background-color: #1c8a90;
-  }
-`;
-
-const PromptDisplay = styled.p`
-  font-size: 1.2em;
-  margin-bottom: 20px;
-  color: #333;
-`;
-
-const PostsList = styled.div`
-  width: 80%;
-  max-width: 600px;
-  margin-top: 20px;
-`;
-
-const PostItem = styled.div`
-  background-color: #fff;
-  border: 1px solid #ccc;
-  padding: 15px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-`;
-
-const PostTitle = styled.h3`
-  margin: 0;
-  font-size: 1.4em;
-`;
-
-const PostContent = styled.p`
-  margin: 10px 0;
-`;
-
-const PostActions = styled.div`
-  display: flex;
-  justify-content: flex-end;
-`;
-
-const EditButton = styled(Button)`
-  background-color: #1f9ba1;
-  margin-right: 10px;
-
-  &:hover {
-    background-color: #1c8a90;
-  }
-`;
-
-const DeleteButton = styled(Button)`
-  background-color: #e74c3c;
-  &:hover {
-    background-color: #c0392b;
-  }
-`;
 
 export default Write;

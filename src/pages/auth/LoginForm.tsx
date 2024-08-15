@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import { Link } from 'react-router-dom'; // 회원가입/비밀번호 찾기 링크를 위해 react-router-dom 패키지 사용
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
@@ -21,56 +21,33 @@ const LoginForm = () => {
   };
 
   return (
-    <Form onSubmit={handleLogin}>
-      <Input
+    <form onSubmit={handleLogin} className="flex flex-col w-full max-w-lg mx-auto">
+      <input
         type="text"
         placeholder="아이디 또는 이메일을 입력해 주세요"
         value={email}
         onChange={handleEmailChange}
+        className="p-3 mb-2 text-lg border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-300"
       />
-      <Input
+      <input
         type="password"
         placeholder="비밀번호를 입력해 주세요"
         value={password}
         onChange={handlePasswordChange}
+        className="p-3 mb-2 text-lg border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-300"
       />
-      <Button type="submit">로그인하기</Button>
-    </Form>
+      <button
+        type="submit"
+        className="p-3 text-lg font-semibold text-white bg-teal-500 rounded-md shadow-md hover:bg-teal-600 focus:outline-none transition-colors duration-300"
+      >
+        로그인하기
+      </button>
+      <div className="flex justify-between mt-4">
+        <Link to="/signup" className="text-teal-500 hover:text-teal-700 transition-colors duration-300">회원가입</Link>
+        <Link to="/findPassword" className="text-teal-500 hover:text-teal-700 transition-colors duration-300">비밀번호 찾기</Link>
+      </div>
+    </form>
   );
 };
-
-// 스타일드 컴포넌트 정의
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  max-width: 600px;
-`;
-
-const Input = styled.input`
-  padding: 10px;
-  margin-bottom: 10px;
-  font-size: 1.2em;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  width: 100%;
-`;
-
-const Button = styled.button`
-  padding: 10px;
-  font-size: 1.2em;
-  background-color: #1f9ba1;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 100%;
-  margin-bottom: 20px;
-
-  &:hover {
-    background-color: #1c8a90;
-  }
-`;
 
 export default LoginForm;
