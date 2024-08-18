@@ -1,6 +1,5 @@
 //api를 용도별로 구분하기
-// project/backend/routes/User.api.js
-// project/backend/routes/User.api.js
+//LEADME/backend/routes/User.api.js
 const express = require("express");
 const router = express.Router();
 const { createUser, loginUser } = require("../controllers/User.controller"); // 컨트롤러 임포트

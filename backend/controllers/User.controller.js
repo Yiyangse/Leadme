@@ -1,4 +1,4 @@
-// project/backend/controllers/User.controller.js
+// LEADME/backend/controllers/User.controller.js
 // 이 파일에서는 회원 생성과 로그인 로직을 구현 
 // 각각의 요청을 처리하고, 적절한 응답을 클라이언트에게 반환하는 함수
 const User = require("../models/User");

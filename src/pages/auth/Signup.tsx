@@ -1,14 +1,15 @@
+//LEADME/src/pages/auth/Signup.tsx
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom'; // `useNavigate` 훅을 사용하여 리다이렉트
+import { Link, useNavigate } from 'react-router-dom';
 
 const SignupForm = () => {
   const [name, setName] = useState('');
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(''); // 에러 메시지 상태
-  const navigate = useNavigate(); // 리다이렉트 훅
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
@@ -28,32 +29,42 @@ const SignupForm = () => {
 
   const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError(''); // 이전 에러 초기화
+    setError('');
 
     try {
-      const response = await axios.post('http://localhost:5000/users/signup', {
+      const response = await axios.post('http://localhost:5000/users', {
         name,
         nickname,
         email,
         password
       });
-      
+
       // 회원가입 성공 시
       alert('회원가입이 완료되었습니다!');
-      navigate('/login'); // 로그인 페이지로 리다이렉트
-    } catch (err: any) {
-      // 회원가입 실패 시
-      if (err.response && err.response.data) {
-        setError(err.response.data.msg || '회원가입에 실패했습니다.');
+      navigate('/login');
+    } catch (err) {
+      // 에러 객체를 콘솔에 로그로 출력하여 구조 확인
+      console.error('Signup error:', err);
+
+      if (axios.isAxiosError(err)) {
+        // Axios 에러 처리
+        if (err.response) {
+          // 서버 응답의 구조를 확인하고 적절한 필드를 사용
+          const errorMessage = err.response.data.msg || err.response.data.message || '회원가입에 실패했습니다.';
+          setError(errorMessage);
+        } else {
+          setError('서버 응답이 없습니다.');
+        }
       } else {
-        setError('서버 오류 발생.');
+        // Axios 이외의 에러 처리
+        setError('예기치 않은 오류가 발생했습니다.');
       }
     }
   };
 
   return (
     <form onSubmit={handleSignup} className="flex flex-col w-full max-w-lg mx-auto">
-      {error && <div className="text-red-500 mb-2">{error}</div>} {/* 에러 메시지 표시 */}
+      {error && <div className="text-red-500 mb-2">{error}</div>}
       <input
         type="text"
         placeholder="이름을 입력해 주세요"
