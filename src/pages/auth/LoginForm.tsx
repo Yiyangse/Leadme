@@ -17,18 +17,27 @@ const LoginForm = () => {
   };
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+    console.log("핸들로그인: ", email, password);
     e.preventDefault();
     setError(''); // 이전 에러 초기화
 
     try {
-      const response = await axios.post('http://localhost:5000/users/login', {
+      console.log("액시오스 : ", email, password);
+      await axios.post('http://localhost:5000/log',{
         email,
         password
-      });
+      }).then((rep) => {
+        // 로그인 성공 시
+        console.log(rep.data.token)
+        localStorage.setItem('token', rep.data.token); // JWT 토큰을 로컬 스토리지에 저장
+      })
+      .catch((err) => {
+        console.error(err)
+      })
       
-      // 로그인 성공 시
-      localStorage.setItem('token', response.data.token); // JWT 토큰을 로컬 스토리지에 저장
-      navigate('/'); // 메인 페이지로 리다이렉트
+      
+      
+      navigate('/'); // 메인 페이지로 리다이렉트//
     } catch (err: any) {
       // 로그인 실패 시
       if (err.response && err.response.data) {
@@ -46,6 +55,7 @@ const LoginForm = () => {
         type="text"
         placeholder="아이디 또는 이메일을 입력해 주세요"
         value={email}
+        name='email'
         onChange={handleEmailChange}
         className="p-3 mb-2 text-lg border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-300"
       />
@@ -53,6 +63,7 @@ const LoginForm = () => {
         type="password"
         placeholder="비밀번호를 입력해 주세요"
         value={password}
+        name='password'
         onChange={handlePasswordChange}
         className="p-3 mb-2 text-lg border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-300"
       />
@@ -60,6 +71,7 @@ const LoginForm = () => {
         type="submit"
         className="p-3 text-lg font-semibold text-white bg-teal-500 rounded-md shadow-md hover:bg-teal-600 focus:outline-none transition-colors duration-300"
       >
+
         로그인하기
       </button>
       <div className="flex justify-between mt-4">

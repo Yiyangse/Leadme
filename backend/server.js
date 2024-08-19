@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 require("dotenv").config();
+const router = express.Router();
+const userApi = require("./routes/User.api.js"); // User.api 모듈 임포트
 
 const app = express();
 // Middleware
@@ -21,6 +23,9 @@ mongoose
 // app.get('/', (req, res) => {
 //   res.send('Hello from Express!');
 // });
+
+app.use("/users", userApi);
+app.use("/log", userApi);
 
 // 포트 열기 서버 시작
 app.listen(5000, () => console.log(`Server running on port 5000`));
