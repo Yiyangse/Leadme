@@ -26,14 +26,13 @@ LEADME/
 │
 ├── backend/                    # 백엔드 관련 폴더
 │   ├── controllers/            # 라우트 핸들러
+│   │   └── User.controller.js  # 사용자 관련 컨트롤러
 │   ├── models/                 # Mongoose 모델
+│   │   └── User.js             # 사용자 스키마 정의
 │   ├── routes/                 # API 라우트
-│   ├── middleware/             # 커스텀 미들웨어
-│   ├── config/                 # 환경 설정 파일 (예: DB 설정)
-│   ├── utils/                  # 유틸리티 함수
-│   ├── server.js               # Express 서버 엔트리 포인트
+│   │   └── User.api.js         # 사용자 관련 API 라우트
 │   ├── .env                    # 환경 변수 파일
-│   └── package.json            # 백엔드 의존성 관리
+│   └── server.js               # Express 서버 엔트리 포인트
 │
 ├── node_modules/               # 프론트엔드 의존성 (프론트엔드와 백엔드의 의존성을 분리할 수 있음)
 │
