@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import '../index.css'; 
 interface Post {
   id: number;
   title: string;
