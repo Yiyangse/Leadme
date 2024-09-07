@@ -1,23 +1,23 @@
-import React, { useState } from 'react'; // useState를 import합니다.
+// src/App.tsx
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Todo from './pages/Todo';
 import Write from './pages/Write';
+import Mypage from './pages/auth/Mypage';
 import Login from './pages/auth/Login';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Signup from './pages/auth/Signup';
-import { ThemeProvider } from "styled-components";
-import { lightTheme, darkTheme } from "./style/theme";
-import { GlobalStyle } from "./style/GlobalStyles";
-import styled from "styled-components";
-import ButtonList from './components/ButtonList';
+import { ThemeProvider } from 'styled-components';
+import { lightTheme, darkTheme } from './style/theme';
+import { GlobalStyle } from './style/GlobalStyles';
 
 const App: React.FC = () => {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light'); // useState 사용
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
   const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
   };
 
   return (
@@ -25,12 +25,12 @@ const App: React.FC = () => {
       <GlobalStyle />
       <Router>
         <div className={`App ${theme}`}>
-          <Header />
-          <ButtonList toggleTheme={toggleTheme} isLight={theme === 'light'} />
+          <Header toggleTheme={toggleTheme} isLight={theme === 'light'} />
           <Routes>
             <Route path="/home" element={<Home />} />
             <Route path="/todo" element={<Todo />} />
             <Route path="/write" element={<Write />} />
+            <Route path='/mypage' element={<Mypage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
           </Routes>
