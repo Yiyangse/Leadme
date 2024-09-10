@@ -1,9 +1,10 @@
 
-# 📚 Read me and Lead me <릿미>
-
+## 📚 Read me and Lead me <릿미>
+![image](https://github.com/user-attachments/assets/6769c197-e8c5-4835-82e2-7d554b97f35d)
+<br/>
 ## 🌟 프로젝트 주제 선정
 - **셀프 탐색**부터 **보완점 진단**, 이에 대한 **글쓰기 지원**하는 웹 서비스
-
+![image](https://github.com/user-attachments/assets/c5abdb0b-6196-4d29-8b38-3a7f606a195c)
 <br/>
 
 ## 🗓️ 작업 기간 및 형태
