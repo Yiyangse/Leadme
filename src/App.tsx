@@ -21,6 +21,7 @@ import SignupForm2 from './pages/auth/Signup2';
 import SignupForm4 from './pages/auth/Signup4';
 import Logout from './pages/auth/Logout';
 import MaeGeul from './pages/Writing/Maeguel';
+import SYWriting from './pages/Writing/SYWriting';
 
 const App: React.FC = () => {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
@@ -42,6 +43,7 @@ const App: React.FC = () => {
             <Route path="/write" element={<Write />} />
             <Route path='/mypage' element={<Mypage />} />
             <Route path="/maegeul" element={<MaeGeul />} />
+            <Route path="/sywriting" element={<SYWriting />} />
             <Route path="/login" element={<Login />} />
             <Route path="/email-login" element={<EmailLogin />} />
             <Route path="/mainsignup" element={<MainSignup />} />

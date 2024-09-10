@@ -27,12 +27,12 @@ const MainLogin = () => {
     <>
       <div className="h-screen flex flex-col items-center justify-center bg-gray-100 p-5 dark:bg-gray-800 dark:text-white">
         <h1 className="text-scampi-700 dark:text-scampi-300 text-5xl font-bold font-['DM Sans'] leading-10 inline-flex items-center cursor-pointer">
-          <Link to="/home">MAEGEUL</Link>
+          <Link to="/home">Home</Link>
         </h1>
 
         {/* 카카오 로그인 버튼 */}
         <button onClick={handleLogin} className="w-[486px] h-[73px]">
-          <img className="w-full h-full object-cover" src={KakaoIcon} alt="Kakao Login Button" />
+          <img className="w-full h-full object-cover rounded-full" src={KakaoIcon} alt="Kakao Login Button" />
         </button>
 
         {/* 이메일 로그인 버튼 */}

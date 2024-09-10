@@ -4,7 +4,7 @@
   appearance: none;
   width: 628px; /* 슬라이더 길이 수정 */
   height: 12px;
-  background: linear-gradient(to right, #f3f2f7 0%, #8365f7 100%);
+  background: linear-gradient(to right, #f3f2f7 0%, #48CFCB 100%);
   border-radius: 5px;
   outline: none;
   transition: opacity 0.2s;

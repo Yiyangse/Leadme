@@ -22,7 +22,7 @@ const Header: React.FC = () => {
   }, [isDarkMode]);
 
   useEffect(() => {
-    // `storage` 이벤트를 통해 다른 탭에서 토큰이 변경될 때 상태 업데이트
+    // storage 이벤트를 통해 다른 탭에서 토큰이 변경될 때 상태 업데이트
     const handleStorageChange = () => {
       setIsLoggedIn(!!localStorage.getItem('token'));
     };
@@ -55,27 +55,27 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 flex justify-between items-center w-full p-10 bg-slate-100 bg-opacity-0 dark:bg-scampi-800 shadow-sm">
+    <header className="sticky top-0 z-50 flex justify-between items-center w-full p-10 bg-teal-500 bg-opacity-99 dark:bg-scampi-800 shadow-s">
       <Link to="/home">
-        <button className="text-xl bg-transparent text-scampi-700 dark:text-scampi-200 py-2 px-4 rounded-full hover:bg-scampi-300 dark:hover:bg-scampi-700 cursor-pointer transition-colors font-semibold">
+        <button className="text-xl bg-transparent text-scampi-100 dark:text-scampi-700 py-2 px-4 rounded-full hover:bg-scampi-300 dark:hover:bg-scampi-700 cursor-pointer transition-colors font-semibold">
           ✍️Yiyangse
         </button>
       </Link>
 
       <nav className="flex gap-2">
         <Link to="/maegeul">
-          <button className="text-sm bg-transparent text-scampi-700 dark:text-scampi-200 py-2 px-4 rounded-full border border-scampi-400 dark:border-scampi-600 hover:bg-scampi-300 dark:hover:bg-scampi-700 cursor-pointer transition-colors">
-            매일 글쓰기
+        <button className="bg-scampi-500 dark:bg-scampi-600 text-white py-2 px-4 rounded-full shadow-md hover:bg-scampi-400 dark:hover:bg-scampi-700 transition-colors">
+          Writing
           </button>
         </Link>
         <Link to="/emotionForm">
-          <button className="text-sm bg-transparent text-scampi-700 dark:text-scampi-200 py-2 px-4 rounded-full border border-scampi-400 dark:border-scampi-600 hover:bg-scampi-300 dark:hover:bg-scampi-700 cursor-pointer transition-colors">
-            AI 하루진단
+        <button className="bg-scampi-500 dark:bg-scampi-600 text-white py-2 px-4 rounded-full shadow-md hover:bg-scampi-400 dark:hover:bg-scampi-700 transition-colors">
+          Mood
           </button>
         </Link>
         <Link to="/article">
-          <button className="text-sm bg-transparent text-scampi-700 dark:text-scampi-200 py-2 px-4 rounded-full border border-scampi-400 dark:border-scampi-600 hover:bg-scampi-300 dark:hover:bg-scampi-700 cursor-pointer transition-colors">
-            추천 아티클
+        <button className="bg-scampi-500 dark:bg-scampi-600 text-white py-2 px-4 rounded-full shadow-md hover:bg-scampi-400 dark:hover:bg-scampi-700 transition-colors">
+          Contents
           </button>
         </Link>
       </nav>

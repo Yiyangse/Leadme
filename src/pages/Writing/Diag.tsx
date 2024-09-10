@@ -104,7 +104,7 @@ const Diag: React.FC = () => {
           >
             다시 측정하기
           </button>
-          <Link to="/MgWriting">
+          <Link to="/SYWriting">
             <button className="bg-scampi-500 dark:bg-scampi-600 text-white py-2 px-4 rounded-full shadow-md hover:bg-scampi-400 dark:hover:bg-scampi-700 transition-colors">
               글쓰러가기
             </button>

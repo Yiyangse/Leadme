@@ -46,7 +46,7 @@ const EnergySlider: React.FC<EnergySliderProps> = ({
           </Tooltip>
         </h1>
         <p className="text-scampi-700 dark:text-scampi-300 text-sm font-medium font-['DM Sans'] leading-10">
-          지금 내가 활력 정도를 수치로 기록해봐요.
+          현재 나의 활력 정도를 수치로 기록해봐요.
         </p>
         <div className="relative w-full mx-auto py-8">
           <div className="relative w-10 flex items-center justify-between">

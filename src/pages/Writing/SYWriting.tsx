@@ -7,7 +7,7 @@ import PencilWriting from '../../Icon/Pencil Writing.png';
 import Folder from '../../Icon/Folder.png';
 import MgModal from './MgModal'; // 모달 컴포넌트 임포트
 
-const MgWriting: React.FC = () => {
+const SYWriting: React.FC = () => {
     const [content, setContent] = useState('');
     const [title, setTitle] = useState('');
     const [formattedDate, setFormattedDate] = useState('');
@@ -75,7 +75,6 @@ const MgWriting: React.FC = () => {
     };
     return (
         <>
-            <Header />
             <WritingGuide />
             <div className="BackgroundBorder w-full h-full p-10 bg-white rounded-3xl shadow border border-black/10 flex dark:bg-gray-600 dark:text-white">
                 <div className="Verticalborder flex-grow self-stretch pl-10 pr-11 pt-14 pb-96 border-r border-black/10 flex-col">
@@ -146,4 +145,4 @@ const MgWriting: React.FC = () => {
     );
 };
 
-export default MgWriting;
+export default SYWriting;
