@@ -35,3 +35,9 @@ body {
     background-color: theme('colors.gray.600'); /* 다크 모드 카드 뒷면 배경 색상 */
   }
 }
+
+/* 다크모드 테마 */
+body.dark {
+  background-color: #1a202c;
+  color: #f7fafc;
+}
