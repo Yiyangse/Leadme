@@ -1,3 +1,4 @@
+///src/pages/auth/LoginForm.tsx
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom'; // `useNavigate` 훅을 사용하여 리다이렉트
@@ -23,7 +24,7 @@ const LoginForm = () => {
 
     try {
       console.log("액시오스 : ", email, password);
-      await axios.post('http://localhost:5000/log',{
+      await axios.post('http://localhost:5000/users/login',{
         email,
         password
       }).then((rep) => {
@@ -49,34 +50,35 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleLogin} className="flex flex-col w-full max-w-lg mx-auto">
+    <form onSubmit={handleLogin} className="flex flex-col w-full max-w-lg mx-auto dark:bg-gray-800 dark:text-white">
       {error && <div className="text-red-500 mb-2">{error}</div>} {/* 에러 메시지 표시 */}
+      <div className='h-10 text-white py-2 px-4 rounded-full border border-scampi-400'>이메일주소</div>
       <input
         type="text"
-        placeholder="아이디 또는 이메일을 입력해 주세요"
+        placeholder="이메일을 입력해 주세요"
         value={email}
         name='email'
         onChange={handleEmailChange}
-        className="p-3 mb-2 text-lg border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-300"
+        className="p-3 mb-2 text-lg border border-gray-300 dark:border-gray-600 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-scampi-300 dark:bg-gray-800 dark:text-white"
       />
+     <div className='h-10 text-white py-2 px-4 rounded-full border border-scampi-400'>비밀번호</div>
       <input
         type="password"
-        placeholder="비밀번호를 입력해 주세요"
+        placeholder="숫자, 특수문자, 영문 포함 8자 이상"
         value={password}
         name='password'
         onChange={handlePasswordChange}
-        className="p-3 mb-2 text-lg border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-300"
+        className="p-3 mb-2 text-lg border border-gray-300 dark:border-gray-600 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-scampi-300 dark:bg-gray-800 dark:text-white"
       />
       <button
         type="submit"
-        className="p-3 text-lg font-semibold text-white bg-teal-500 rounded-md shadow-md hover:bg-teal-600 focus:outline-none transition-colors duration-300"
+        className="bg-scampi-500 dark:bg-scampi-600 text-white py-2 px-4 rounded-full shadow-md hover:bg-scampi-400 dark:hover:bg-scampi-700 transition-colors"
       >
-
         로그인하기
       </button>
       <div className="flex justify-between mt-4">
-        <Link to="/Signup" className="text-teal-500 hover:text-teal-700 transition-colors duration-300">회원가입</Link>
-        <Link to="/findPassword" className="text-teal-500 hover:text-teal-700 transition-colors duration-300">비밀번호 찾기</Link>
+        <Link to="/Signup" className="text-scampi-500 hover:text-scampi-700 transition-colors duration-300">회원가입</Link>
+        <Link to="/findPassword" className="text-scampi-500 hover:text-scampi-700 transition-colors duration-300">비밀번호 찾기</Link>
       </div>
     </form>
   );
